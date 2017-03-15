@@ -1,0 +1,32 @@
+.main .white p{
+  padding-right: 10px;
+  padding-top: .7rem;
+  text-align: right;
+}
+.main .white p .orangeTime{
+  font-size: 2.4rem;
+  color: #FFA13E;
+  letter-spacing: .2rem;
+  padding: 0 .2rem;
+}
+.panel-body{
+  position: relative;
+}
+.btn:hover{
+  color: white;
+  background-color: #52BDE3;
+}
+.print{
+ position: absolute;
+ right: 2%;
+ top: 50px;
+ background-color: #6ACFF7;
+ color: white;
+ font-size: 1.8rem;
+ padding: 8px 2rem;
+}
+iframe{
+  width: 80%;
+  margin-left: 10%;
+  height: 700px;
+}

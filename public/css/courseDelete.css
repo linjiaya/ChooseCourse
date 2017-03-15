@@ -1,0 +1,21 @@
+.panel-group .panel{
+  border-top: 0;
+}
+caption{
+  color: red;
+  text-align: center;
+  font-size: 1.7rem;
+}
+th{
+  color:#FFCB00;
+  text-align: center;
+  white-space: nowrap;
+}
+td{
+  text-align: center;
+  white-space: nowrap;
+}
+.btn{
+  float: right;
+  padding:6px 2rem;
+}

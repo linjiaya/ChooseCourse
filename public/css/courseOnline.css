@@ -1,0 +1,22 @@
+.searchDiv{
+  width: 350px;
+  margin: auto;
+  line-height: 50px;
+}
+.searchDiv .form-group{
+  display: inline-block;
+  width: 150px;
+  margin-right: 40px;
+}
+th{
+  color:#FFCB00;
+  text-align: center;
+  white-space: nowrap;
+}
+td{
+  text-align: center;
+  white-space: nowrap;
+}
+#submitDiv{
+  text-align: right;
+}

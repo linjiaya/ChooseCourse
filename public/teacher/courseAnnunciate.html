@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大学生网上选课系统</title>
+      <!-- 引入 Bootstrap -->
+      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+      <link rel="stylesheet" href="../css/courseSystem.css">
+      <link rel="stylesheet" href="../css/courseAunnciate.css">
+</head>
+<body>
+
+  <div class="navigation">
+    <ul>
+      <li><a class="active" href="courseAnnunciate.html"><span class="navIcon" id="annunciate"></span><p>选课公告</p></a></li>
+      <li><a href="courseResult.html"><span class="navIcon" id="result"></span><p>选课结果</p></a></li>
+      <li><a href="mySchedule.html"><span class="navIcon" id="schedule"></span><p>我的课表</p></a></li>
+    </ul>
+  </div>
+  <div class="contain">
+    <header><h3>大学生网上选课系统</h3></header>
+    
+    <div class="main">
+      <ul class="nav nav-tabs nav-justified" id="headNav">
+        <li class="active"><a data-toggle="tab" href="#part1">公选课</a></li>
+        <li><a data-toggle="tab" href="#part1">实验课</a></li>
+        <li><a data-toggle="tab" href="#part1">方向课</a></li>
+      </ul>
+
+      <div class="white">
+      <div class="tab-content">
+        <div id="part1" class="tab-pane fade in active">
+          <div class="timeDiv">
+            <p><small>开始时间：</small><span class="orangeTime">2017年2月20日</span></p>
+          </div>  
+          <div class="panel-group" id="accordion1">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion1" 
+                     href="#collapseOne">
+                    <span class="glyphicon glyphicon-hand-right"></span> 选课通知
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <div class="annouceImg" id="annouce1">
+                    <iframe id="" name="" src="../file/test.html" frameborder="0"></iframe>
+                  </div>
+                    <button class="btn print">打印</button>
+                </div>
+              </div>
+            </div>
+          </div><!-- panel-group 结束-->
+        </div><!-- part1 结束 -->
+      </div><!-- white 结束 -->
+    </div><!-- main 结束 -->
+  </div><!-- contain 结束 -->
+   <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+   <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
+   <!-- 包括所有已编译的插件 -->
+   <script src="../bootstrap/js/bootstrap.min.js"></script>
+   <script src="../js/courseAunnciate.js"></script>
+</body>
+</html>

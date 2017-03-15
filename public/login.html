@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大学生网上选课系统登录</title>
+      <!-- 引入 Bootstrap -->
+      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+      <link rel="stylesheet" href="css/login.css">   
+</head>
+<body>
+  <h1>大学生网上选课系统</h1>
+  <div class="bgImg">
+    <img src="img/logo1.png" alt="logo">
+    <div class="loginMain">
+    <form action="">
+      <p class="form-group" id="userP">
+      <label for="user">校园通账号：</label>
+      <input type="text" id="user" class="input form-control" name="user" data-container="body" data-toggle="popover" data-placement="top" data-content="请正确输入校园通账号" placeholder="学号或教职工号">
+      </p>
+      <p class="form-group" id="pswP">
+      <label for="password">密码</label>：
+      <input type="password" id="password" class="input form-control" name="password" data-container="body" data-toggle="popover" data-placement="top" data-content="请正确填写密码">
+      </p>
+      <a href="forgetPsw.html">忘记密码？</a>
+      <p class="lastP">
+      <label for="type">请选择身份：</label>
+      <select name="typeId" class="input form-control" id="typeId">
+        <option value="1">学生</option>
+        <option value="2">教师</option>
+        <option value="0">管理员</option>
+      </select>      
+      </p>
+      <input type="checkbox" id="remember" name="remember"> <label for="remember">记住我</label>
+    </form>
+      <button type="button" id="submit" class="btn btn-primary btn-success btn-block">登录<span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+    </div>  
+  </div>  
+  <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+  <script src="bootstrap/js/jquery-3.1.1.min.js"></script>
+  <!-- 包括所有已编译的插件 -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/login.js"></script></body>
+</html>

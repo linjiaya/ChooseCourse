@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大学生网上选课系统</title>
+      <!-- 引入 Bootstrap -->
+      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+      <link rel="stylesheet" href="../css/courseSystem.css">
+      <link rel="stylesheet" href="../css/courseResult.css">
+      <script src="../js/template-native.js"></script>
+</head>
+<body>
+
+  <div class="navigation">
+    <ul>
+      <li><a href="publishAunnciate.html"><span class="navIcon" id="annunciate"></span><p>发布通知</p></a></li>
+      <li><a href="publishCourse.html"><span class="navIcon" id="online"></span><p>发布选课</p></a></li>
+      <li><a class="active" href="courseResult.html"><span class="navIcon" id="result"></span><p>选课结果</p></a></li>
+      <li><a href="endChoose.html"><span class="navIcon" id="endChoose"></span><p>结束选课</p></a></li>
+    </ul>
+  </div>
+  <div class="contain">
+    <header><h3>大学生网上选课系统</h3></header>
+    <div class="main">
+      <ul class="nav nav-tabs nav-justified" id="headNav">
+        <li class="active" data="openCourse"><a data-toggle="tab" href="#part1">公选课</a></li>
+        <li data="labCourse"><a data-toggle="tab" href="#part2">实验课</a></li>
+        <li data="dirCourse"><a data-toggle="tab" href="#part2">方向课</a></li>
+      </ul>
+
+      <div class="white">
+      <div class="tab-content">
+        <div id="part1" class="tab-pane fade in active">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#collapseOne">
+                    <span class="glyphicon glyphicon-hand-right"></span> 选课结果
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body" id="collapseOnePanel">
+                </div><!-- panel-body 结束 -->
+
+      <!-- script 代码添加 开始-->
+                <script id="validCourseList" type="text/html">
+                  <% if (isAdmin) { %>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>课程号</th>
+                          <th>课程名</th>
+                          <th>学分</th>
+                          <th>老师</th>
+                          <th>上课地点</th>
+                          <th>上课周数</th>
+                          <th>上课节数</th>
+                          <th>星期</th>
+                          <th>已选人数</th>
+                          <th>可选人数</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for (var i = 0;i < list.length; i++) { %>
+                        <tr id="<%= list[i].id%>">
+                          <td><%= list[i].id %></td>
+                          <td><%= list[i].subject_name %></td>
+                          <td><%= list[i].credit %></td>
+                          <td><%= list[i].teacher_name %></td>
+                          <td><%= list[i].place %></td>
+                          <td><%= list[i].start_week %>～<%= list[i].endWeek %>周</td>
+                          <td><%= list[i].course_section %>节</td>
+                          <td><%= list[i].course_weekday %></td>
+                          <td><%= list[i].check_people %></td>
+                          <td><%= list[i].people_max %></td>
+                        </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                  <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
+
+
+              </div>
+            </div><!-- panel 结束 -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" 
+                     href="#collapseTwo">
+                    <span class="glyphicon glyphicon-hand-right"></span> 设置无效选课
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                <div id="collapseTwoPanel"></div>
+                <div id="successNoValidList"></div>  
+                </div><!-- panel-body 结束 -->
+
+
+          <!-- script 代码添加 开始-->
+                 <script id="noValidCourseList" type="text/html">
+                  <% if (isAdmin) { %>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>&nbsp;</th>
+                          <th>课程号</th>
+                          <th>课程名</th>
+                          <th>学分</th>
+                          <th>老师</th>
+                          <th>上课地点</th>
+                          <th>上课周数</th>
+                          <th>上课节数</th>
+                          <th>星期</th>
+                          <th>已选人数</th>
+                          <th>可选人数</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for (var i = 0;i < list.length; i++) { %>
+                        <tr id="<%= list[i].id%>">
+                          <td><input type="checkbox" id="" name="openCourse"></td>
+                          <td><%= list[i].id %></td>
+                          <td><%= list[i].subject_name %></td>
+                          <td><%= list[i].credit %></td>
+                          <td><%= list[i].teacher_name %></td>
+                          <td><%= list[i].place %></td>
+                          <td><%= list[i].start_week %>～<%= list[i].endWeek %>周</td>
+                          <td><%= list[i].course_section %>节</td>
+                          <td><%= list[i].course_weekday %></td>
+                          <td><%= list[i].check_people %></td>
+                          <td><%= list[i].people_max %></td>
+                        </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="setNoUseCourse">
+                     <input type="checkbox" name="allChecked" id="allChecked" onclick="allChecked('allChecked','openCourse')"> <label for="allChecked">全选</label>
+                     <button class="btn btn-info" id="setNoUseCourse" onclick="setNoUseCourse()">设置为无效选课</button>
+                  </div>
+                  <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
+            
+            <!-- script 代码添加 开始-->
+                 <script id="noValidCourseListSuccess" type="text/html">
+                  <% if (isAdmin) { %>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>&nbsp;</th>
+                          <th>课程号</th>
+                          <th>课程名</th>
+                          <th>学分</th>
+                          <th>老师</th>
+                          <th>上课地点</th>
+                          <th>上课周数</th>
+                          <th>上课节数</th>
+                          <th>星期</th>
+                          <th>已选人数</th>
+                          <th>可选人数</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for (var i = 0;i < list.length; i++) { %>
+                        <tr id="<%= list[i].id%>">
+                          <td><input type="checkbox" id="" name="noValidCourse"></td>
+                          <td><%= list[i].id %></td>
+                          <td><%= list[i].subject_name %></td>
+                          <td><%= list[i].credit %></td>
+                          <td><%= list[i].teacher_name %></td>
+                          <td><%= list[i].place %></td>
+                          <td><%= list[i].start_week %>～<%= list[i].endWeek %>周</td>
+                          <td><%= list[i].course_section %>节</td>
+                          <td><%= list[i].course_weekday %></td>
+                          <td><%= list[i].check_people %></td>
+                          <td><%= list[i].people_max %></td>
+                        </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="setNoUseCourse">
+                     <input type="checkbox" name="allChecked" id="allChecked2" onclick="allChecked('allChecked2','noValidCourse')"> <label for="allChecked2">全选</label>
+                     <button class="btn btn-info" id="updateNoUseCourse" onclick="updateNoUseCourse()">设置为有效选课</button>
+                  </div>
+                  <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
+
+              </div>
+            </div><!-- panel 结束 -->
+          </div><!-- panel-group 结束-->
+        </div><!-- part1 结束 -->
+
+        <div id="part2" class="tab-pane">
+          <div class="panel-group" id="accordion1">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion1" 
+                     href="#collapseThree">
+                    <span class="glyphicon glyphicon-hand-right"></span> 选课结果
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse in">
+                <div class="panel-body" id="collapseThreePanel" >
+                </div><!-- panel-body 结束 -->
+
+
+          <!-- script 代码添加 开始-->
+                 <script id="CourseList" type="text/html">
+                  <% if (isAdmin) { %>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>课程号</th>
+                          <th>课程名</th>
+                          <th>学分</th>
+                          <th>老师</th>
+                          <th>上课地点</th>
+                          <th>上课周数</th>
+                          <th>上课节数</th>
+                          <th>星期</th>
+                          <th>已选人数</th>
+                          <th>可选人数</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       <% for (var i = 0;i < list.length; i++) { %>
+                        <tr id="<%= list[i].id%>">
+                          <td><%= list[i].id %></td>
+                          <td><%= list[i].subject_name %></td>
+                          <td><%= list[i].credit %></td>
+                          <td><%= list[i].teacher_name %></td>
+                          <td><%= list[i].place %></td>
+                          <td><%= list[i].start_week %>～<%= list[i].endWeek %>周</td>
+                          <td><%= list[i].course_section %>节</td>
+                          <td><%= list[i].course_weekday %></td>
+                          <td><%= list[i].check_people %></td>
+                          <td><%= list[i].people_max %></td>
+                        </tr>
+                        <% } %>
+                      </tbody>
+                    </table>
+                  </div>
+                  <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
+
+
+              </div>
+            </div><!-- panel 结束 -->
+          </div><!-- panel-group 结束-->
+        </div><!-- part2 结束 -->
+      </div><!-- white 结束 -->
+    </div><!-- main 结束 -->
+  </div><!-- contain 结束 -->
+   <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+   <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
+   <!-- 包括所有已编译的插件 -->
+   <script src="../bootstrap/js/bootstrap.min.js"></script>
+   <script src="../js/admin_courseResult.js"></script>
+</body>
+</html>

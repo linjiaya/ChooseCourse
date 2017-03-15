@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教职工注册</title>
+      <!-- 引入 Bootstrap -->
+      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+  <header><h3>大学生网上选课系统</h3></header>
+  <div class="container">
+    <div class="icon">
+      <span class="glyphicon glyphicon-user"></span>
+      <h4>教职工注册</h4>
+    </div>
+    <div>
+      <form action="">
+        <table>
+          <tr>
+            <th><label for="teacherNum">校园通账号</label></th>
+            <th><label for="teacherPassword">密码</label></th>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <input type="text" class="form-control" id="teacherNum" name="teacherNum" placeholder="教职工号">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input type="password" class="form-control" id="teacherPassword" name="teacherPassword" placeholder="由6-20个英文、数字组成">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th><label for="teacherName">姓名</label></th>
+            <th><label>性别</label></th>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+              <input type="text" class="form-control" id="teacherName" name="teacherName">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <label for="man"><input type="radio" name="teacherSex" value="man" id="man"> 男</label>
+                <label for="woman"><input type="radio" name="teacherSex" value="woman" id="woman"> 女</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th><label for="teacherCollage">学院</label></th>
+            <!-- <th><label for="stuMajor">专业</label></th> -->
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <select name="teacherCollage" id="teacherCollage" class="form-control">
+                  <option value="1">软件学院</option>
+                  <option value="2">信工学院</option>
+                  <option value="3">测绘学院</option>
+                  <option value="4">经管学院</option>
+                  <option value="5">外国语学院</option>
+                </select>
+              </div>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th><label for="teacherIDCard">身份证号码</label></th>
+            <th><label for="teacherPhone">手机号</label></th>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+              <input type="text" class="form-control" id="teacherIDCard" name="teacherIDCard">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+              <input type="text" class="form-control" id="teacherPhone" name="teacherPhone">
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <button type="button" id="submit" class="btn btn-primary btn-success btn-lg">注册</button>
+      <p>已有校园通账号，现在去<a href="login.html"> 登录</a></p>
+    </div>
+  </div>  
+
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+  <script src="bootstrap/js/jquery-3.1.1.min.js"></script>
+  <!-- 包括所有已编译的插件 -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/register.js"></script>
+
+</body>
+</html>

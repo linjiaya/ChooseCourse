@@ -1,0 +1,64 @@
+*{
+  padding: 0;
+  margin:0;
+  font-family: "微软雅黑";
+}
+body{
+  background-color: #F0F4F9;
+}
+header{
+  height: 60px;
+  background-color: #2b333e;
+  color: #f1f4f9;
+  display: block;
+  padding: 20px 0 10px 20px;
+}
+h3{
+  margin:0;
+  font-size: 20px;
+  letter-spacing: .1em;
+}
+.container{
+  width: 500px;
+  border:1px solid #ccc;
+  margin: 40px auto;
+  background-color: #F7F7F7;
+}
+.icon{
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  padding: 15px 0 5px;
+}
+.glyphicon-user{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #337AB7;
+  text-align: center;
+  line-height: 60px;
+  border:1px solid #337AB7;
+}
+table{
+  width: 100%;
+  margin:10px 0;
+}
+th{
+  padding: 10px 5% 0;
+}
+td{
+  padding: 0 5%;
+}
+button{
+  margin:10px 5%;
+  width: 90%;
+}
+p{
+  line-height: 38px;
+  font-size: 12px;
+  text-align: center;
+}
+p a{
+  font-size: 14px;
+  letter-spacing: .3em;
+}

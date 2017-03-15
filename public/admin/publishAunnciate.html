@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大学生网上选课系统</title>
+      <!-- 引入 Bootstrap -->
+      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+      <link rel="stylesheet" href="../css/courseSystem.css">
+      <link rel="stylesheet" href="../css/publishAnnunciate.css">
+</head>
+<body>
+
+  <div class="navigation">
+    <ul>
+      <li><a class="active" href="publishAunnciate.html"><span class="navIcon" id="annunciate"></span><p>发布通知</p></a></li>
+      <li><a href="publishCourse.html"><span class="navIcon" id="online"></span><p>发布选课</p></a></li>
+      <li><a href="courseResult.html"><span class="navIcon" id="result"></span><p>选课结果</p></a></li>
+      <li><a href="endChoose.html"><span class="navIcon" id="endChoose"></span><p>结束选课</p></a></li>
+    </ul>
+  </div>
+  <div class="contain">
+    <header><h3>大学生网上选课系统</h3></header>
+    <div class="main">
+      <div class="white">
+      <form class="form-horizontal" role="form">
+<!-- 选课类别 -->
+        <div class="form-group" id="typeCourse">
+          <label class="col-sm-5 control-label">选课类别：</label>
+          <div class="col-sm-7">
+            <input type="radio" name="typeCourse" value="openCourse" id="openCourse" checked>
+            <input type="radio" name="typeCourse" value="labCourse" id="labCourse">
+            <input type="radio" name="typeCourse" value="directionCourse" id="directionCourse">
+            <div class="btn-group btn-group-sm">
+              <button type="button" class="btn btn-default"><label for="openCourse">公选课</label></button>
+              <button type="button" class="btn btn-default"><label for="labCourse">实验课</label></button>
+              <button type="button" class="btn btn-default"><label for="directionCourse">方向课</label></button>
+            </div> 
+            
+          </div>
+        </div>
+<!-- 选课开始时间 -->
+        <div class="form-group" id="setTimeStart">
+          <label class="col-sm-5 control-label">选课开始时间：</label>
+          <div class="col-sm-7">
+            <select name="" id="" class="btn btn-default">
+              <option value="2017">2017</option>
+            </select>
+            <label>年</label>
+            <select name="" id="" class="btn btn-default">
+              <option value="1">1</option>
+            </select>
+            <label>月</label>
+            <select name="" id="" class="btn btn-default">
+              <option value="11">11</option>
+            </select>
+            <label>年</label>
+          </div>
+        </div>
+<!-- 上传通知公告 -->
+        <div class="form-group" id="upFile">
+          <label class="col-sm-5 control-label">上传通知公告：</label>
+          <div class="col-sm-7">
+            <button class="btn btn-info"><label for="inputfile">+上传</label></button>
+            <input type="file" id="inputfile" class="sr-only">
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" id="publish">确认发布</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+ <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+   <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
+   <!-- 包括所有已编译的插件 -->
+   <script src="../bootstrap/js/bootstrap.min.js"></script>
+   <script src="../js/publishAnnunciate.js"></script>
+</body>
+</html>

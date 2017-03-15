@@ -1,0 +1,73 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: "微软雅黑";
+}
+body{
+  background-color: #F0F4F9;
+}
+h1{
+  font-size: 2.5em;
+  font-style: italic;
+  letter-spacing: .1em;
+  line-height: 80px;
+  margin-left: 200px;
+}
+.bgImg{
+  width: 100%;
+  height:300px;
+  background-color: #282f39;
+  position: relative;
+}
+img{
+  height: 300px;
+  margin-left: 200px;
+  float: left;
+}
+.loginMain{
+  width: 300px;
+  height: 380px;
+  margin:-40px 0 0 250px;
+  padding: 15px 25px;
+  background-color: rgba(98,98,98,0.6);
+  float: left;
+  // box-shadow:10px 15px 3px #8b8a8a;
+  // -webkit-box-shadow: 10px 15px 3px #8b8a8a;
+}
+p{
+  margin:30px auto 5px;
+  padding: 5px;
+  background-color: white;
+}
+.lastP{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+label[for="password"]{
+  letter-spacing: 1.5em;
+}
+label[for="remember"]{
+  color: white;
+  font-size: .8em;
+}
+.input{
+  border:0;
+  background-color: white;
+  width: 148px;
+  display: inline-block;
+}
+.form-group {
+  margin-bottom: 5px;
+}
+.btn{
+  margin:20px 0;
+  letter-spacing: .8em;
+  font-size: 18px;
+}
+a{
+  color: #f8d163;
+  font-size: .8em;
+}
+a:hover{
+  color: #69d0fb;
+}

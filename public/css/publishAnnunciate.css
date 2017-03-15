@@ -1,0 +1,46 @@
+.white{
+  padding: 2rem;
+  white-space: nowrap;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+label{
+  font-size: 1.5rem;
+}
+#typeCourse input{
+  position: absolute;
+  opacity: 0;
+}
+#typeCourse .btn-group label,#upFile label[for="inputfile"]{
+  padding: 3px 15px;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  font-weight: 200;
+}
+#typeCourse .btn-group-sm>.btn,#typeCourse .btn,#upFile .btn{
+  padding: 0;
+}
+.btn-group-sm>.btn{
+  background-color: #ddd;
+  border-radius: 50px;
+  border:2px solid #ddd;
+}
+#openCourse:checked ~ .btn-group .btn:first-child,#labCourse:checked ~ .btn-group .btn:nth-child(2),#directionCourse:checked ~ .btn-group .btn:last-child{
+  background-color: white;
+}
+#openCourse:checked ~ .btn-group .btn:first-child label,#labCourse:checked ~ .btn-group .btn:nth-child(2) label,#directionCourse:checked ~ .btn-group .btn:last-child label{
+  font-weight: 500;
+}
+#setTimeStart label{
+  padding: 6px 1rem 6px .3rem;
+}
+#publish,#end{
+  width: 250px;
+  display: block;
+  padding: .6rem;
+  font-size: 1.8rem;
+  margin: 2rem auto 1rem;
+}
+#end{
+  width: 100px;
+}

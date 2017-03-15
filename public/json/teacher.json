@@ -1,0 +1,9 @@
+[
+{"teacherNum":"1001","teacherName":"魏正华","teacherSex":"女","teacherCollage":"软件学院","teacherIDCard":"3625291889020200011","teacherPassword":"aaaaaa","teacherPhone":"18111111111"},
+{"teacherNum":"1002","teacherName":"付玲","teacherSex":"女","teacherCollage":"外国语学","teacherIDCard":"3625291889020200012","teacherPassword":"bbbbbb","teacherPhone":"18211111111"},
+{"teacherNum":"1003","teacherName":"谢小林","teacherSex":"女","teacherCollage":"软件学院","teacherIDCard":"3625291889020200013","teacherPassword":"cccccc","teacherPhone":"18311111111"},
+{"teacherNum":"1004","teacherName":"樊继秋","teacherSex":"男","teacherCollage":"经管学院","teacherIDCard":"3625291889020200014","teacherPassword":"dddddd","teacherPhone":"18411111111"},
+{"teacherNum":"1005","teacherName":"张三","teacherSex":"男","teacherCollage":"测绘学院","teacherIDCard":"3625291889020200015","teacherPassword":"eeeeee","teacherPhone":"18511111111"},
+{"teacherNum":"1006","teacherName":"李四","teacherSex":"男","teacherCollage":"经管学院","teacherIDCard":"3625291889020200016","teacherPassword":"ffffff","teacherPhone":"18611111111"},
+{"teacherNum":"1007","teacherName":"王五","teacherSex":"男","teacherCollage":"外国语学","teacherIDCard":"3625291889020200017","teacherPassword":"gggggg","teacherPhone":"18711111111"}
+]

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>忘记密码</title>
+      <!-- 引入 Bootstrap -->
+      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+      <link rel="stylesheet" href="css/forgetPsw.css">   
+</head>
+<body>
+  <header><h3>大学生网上选课系统</h3></header>
+  <h2>找回密码</h2>
+  <div class="progressBar">
+    <span class="step active">1</span>
+    <span class="line"><span class="gray"></span><span class="green"></span></span>
+    <span class="step">2</span>
+    <span class="line"><span class="gray"></span><span class="green"></span></span>
+    <span class="step">3</span>
+    <ul>
+      <li>确认账号名</li>
+      <li>设置新密码</li>
+      <li>设置成功</li>
+    </ul>
+  </div>
+  <div class="container" id="part1">
+    <p class="form-group" id="userP">
+      <label for="user">校园通账号：</label>
+      <input type="text" id="user" class="form-control" name="user" data-container="body" data-toggle="popover" data-placement="top" data-content="请正确输入校园通账号" required>
+    </p>
+    <p class="form-group" id="typeP">
+      <label class="checkbox-inline"><input type="radio" name="typeId" value="1" checked>学生</label>
+      <label class="checkbox-inline"><input type="radio" name="typeId" value="2">老师</label>
+    </p>
+     <button type="button" id="submit1" class="btn btn-primary btn-success btn-block submit" name="next">下一步 <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+  </div>
+  <div class="container" id="part2">
+    <label for="tel">手机号：</label>
+    <p class="input-group form-group" id="telP">
+      <input type="tel" id="tel" class="form-control" name="tel" readonly>
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-success" type="button" id="sendCaptcha">发送验证码</button>
+      </span>
+    </p>
+    <p class="form-group" id="verP">
+      <label for="verification">验证码：</label>
+      <input type="text" id="verification" class="form-control" name="verification" data-container="body" data-toggle="popover" data-placement="top" data-content="请正确输入验证码" required>
+    </p>
+    <p class="form-group" id="nPswP">
+      <label for="newPsw">新密码：</label>
+      <input type="text" id="newPsw" class="form-control" name="newPsw" data-container="body" data-toggle="popover" data-placement="top" data-content="密码由6-20个英文、数字组成" required>
+    </p>
+    <p class="form-group" id="checkP">
+      <label for="checkPsw">确认密码：</label>
+      <input type="text" id="checkPsw" class="form-control" name="checkPsw" data-container="body" data-toggle="popover" data-placement="top" data-content="与密码不一致" required>
+    </p>
+     <button type="button" id="submit2" class="btn btn-primary btn-success btn-block submit" name="next">下一步 <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+  </div>
+  <div class="container" id="part3">
+    <span class="glyphicon glyphicon-ok-sign"></span><span>设置成功！</span><small>现在去 </small><a href="login.html">登录</a>
+  </div>
+ <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+  <script src="bootstrap/js/jquery-3.1.1.min.js"></script>
+  <!-- 包括所有已编译的插件 -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/forgetPsw.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+.main .white{
+  border-top: 1px solid #ddd;
+}
+.panel-group .panel{
+  border-top: 0;
+}
+caption{
+  color: red;
+  text-align: center;
+  font-size: 1.7rem;
+}
+th{
+  color:#FFCB00;
+  text-align: center;
+  white-space: nowrap;
+}
+td{
+  text-align: center;
+  white-space: nowrap;
+}
+.setNoUseCourse{
+  // float: right;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+#setNoUseCourse,#updateNoUseCourse{
+  margin-left: 2rem;
+}
+#successNoValidList td{
+  color:#aaa;
+}

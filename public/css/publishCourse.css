@@ -1,0 +1,75 @@
+.white{
+  padding-top: 2rem;
+  white-space: nowrap;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+label{
+  font-size: 1.5rem;
+}
+.form-horizontal .form-group{
+  margin-left: 0;margin-right: 0;
+}
+.panel-group {
+  margin-bottom: 0px; 
+}
+#typeCourse input{
+  position: absolute;
+  opacity: 0;
+}
+#typeCourse .btn-group label,#upFile label[for="inputfile"]{
+  padding: 3px 15px;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  font-weight: 200;
+}
+#typeCourse .btn-group-sm>.btn,#typeCourse .btn,#upFile .btn{
+  padding: 0;
+}
+.btn-group-sm>.btn{
+  background-color: #ddd;
+  border-radius: 50px;
+  border:2px solid #ddd;
+}
+#openCourse:checked ~ .btn-group .btn:first-child,#labCourse:checked ~ .btn-group .btn:nth-child(2),#dirCourse:checked ~ .btn-group .btn:last-child{
+  background-color: white;
+}
+#openCourse:checked ~ .btn-group .btn:first-child label,#labCourse:checked ~ .btn-group .btn:nth-child(2) label,#dirCourse:checked ~ .btn-group .btn:last-child label{
+  font-weight: 500;
+}
+
+th{
+  color:#FFCB00;
+  text-align: center;
+  white-space: nowrap;
+}
+td{
+  text-align: center;
+  white-space: nowrap;
+}
+.form-control label{
+  padding: .6rem;
+}
+#addCourse{
+  float: right;
+  margin-right: 2rem;
+}
+@media(max-width: 768px) {
+  #ensureAdd,#ensureUpdate{
+    display: block;
+    width: 83%;
+    margin-top: 0;
+    margin:0 auto;
+  }
+  #ensureUpdate
+}
+@media(min-width: 768px) {
+  #ensureAdd,#ensureUpdate{
+    margin-top: -50px;
+    float: right;
+    margin-right: 2rem;
+  }
+}
+#collapseOnePanel{
+  display: none;
+}
