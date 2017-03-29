@@ -31,8 +31,11 @@ label{
 #openCourse:checked ~ .btn-group .btn:first-child label,#labCourse:checked ~ .btn-group .btn:nth-child(2) label,#directionCourse:checked ~ .btn-group .btn:last-child label{
   font-weight: 500;
 }
-#setTimeStart label{
-  padding: 6px 1rem 6px .3rem;
+// #setTimeStart label{
+//   padding: 6px 1rem 6px .3rem;
+// }
+#setTimeStart input{
+  width: 240px;
 }
 #publish,#end{
   width: 250px;

@@ -21,11 +21,12 @@
     <ul>
       <li><a class="active" href="courseAnnunciate.html"><span class="navIcon" id="annunciate"></span><p>选课公告</p></a></li>
       <li><a href="courseResult.html"><span class="navIcon" id="result"></span><p>选课结果</p></a></li>
+      <li><a href="courseDelete.html"><span class="navIcon" id="delete"></span><p>退课</p></a></li>
       <li><a href="mySchedule.html"><span class="navIcon" id="schedule"></span><p>我的课表</p></a></li>
     </ul>
   </div>
   <div class="contain">
-    <header><h3>大学生网上选课系统</h3></header>
+    <header><h3>大学生网上选课系统</h3><span><label></label>｜<a href="#" class="safeExit">安全退出</a></span></header>
     
     <div class="main">
       <ul class="nav nav-tabs nav-justified" id="headNav">
@@ -53,9 +54,12 @@
               <div id="collapseOne" class="panel-collapse collapse in">
                 <div class="panel-body">
                   <div class="annouceImg" id="annouce1">
-                    <iframe id="" name="" src="../file/test.html" frameborder="0"></iframe>
+                    <!-- <iframe id="" name="" src="../file/open.html" frameborder="0"></iframe> -->
+                    <iframe src="../file/open.html" frameborder="0" scrolling="anto" name="main" id="printID"
+                    style=" VISIBILITY: inherit;  Z-INDEX: 1;">
+                     </iframe>
                   </div>
-                    <button class="btn print">打印</button>
+                    <button class="btn btn-info print">打印</button>
                 </div>
               </div>
             </div>
@@ -68,6 +72,7 @@
    <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
    <!-- 包括所有已编译的插件 -->
    <script src="../bootstrap/js/bootstrap.min.js"></script>
-   <script src="../js/courseAunnciate.js"></script>
+   <script src="../js/cookies.js"></script>
+   <script src="../js/teacher_courseAunnciate.js"></script>
 </body>
 </html>

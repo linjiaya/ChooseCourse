@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,11 +22,13 @@
       <li><a href="publishAunnciate.html"><span class="navIcon" id="annunciate"></span><p>发布通知</p></a></li>
       <li><a href="publishCourse.html"><span class="navIcon" id="online"></span><p>发布选课</p></a></li>
       <li><a href="courseResult.html"><span class="navIcon" id="result"></span><p>选课结果</p></a></li>
+      <li><a href="courseDelete.html"><span class="navIcon" id="delete"></span><p>退课审批</p></a></li>
       <li><a class="active" href="endChoose.html"><span class="navIcon" id="endChoose"></span><p>结束选课</p></a></li>
+      <!-- <li><a href="addPeople.html"><span class="navIcon" id="addPeople"></span><p>添加人员</p></a></li> -->
     </ul>
   </div>
   <div class="contain">
-    <header><h3>大学生网上选课系统</h3></header>
+    <header><h3>大学生网上选课系统</h3><span><label></label>｜<a href="#" class="safeExit">安全退出</a></span></header>
     <div class="main">
       <div class="white">
       <form class="form-horizontal" role="form">
@@ -55,6 +57,7 @@
    <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
    <!-- 包括所有已编译的插件 -->
    <script src="../bootstrap/js/bootstrap.min.js"></script>
+   <script src="../js/cookies.js"></script>
    <script src="../js/endChoose.js"></script>
 </body>
 </html>

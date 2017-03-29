@@ -1,7 +1,30 @@
+// 判断是否有cookie
+$(function(){
+  $.getJSON('../cookies',function(data){
+    if(data.res == '0'){
+      alert(data.msg);
+      window.location.href='../login.html';
+      return;
+    }
+    if (data.data[0].typeId != '1') {
+      $.getJSON('../deleteCookies',function(res){
+      })
+      window.location.href='../login.html';
+      return;
+    }
+    console.log(data);
+    $('header span').attr('data',data.data[0].typeId);
+    $('header span label').html(data.data[0].username);
+    $('header span label').attr('data',data.data[0].userId);
+    courseInform('openCourse');
+  });
+});
+
 var index = 2; //数据注入次数
-var arr = [];  //定义数组接收新闻列表
+var arr = [];  //定义数组接收列表
 var pageNum;
 var pageArr = [];//页数
+
   // 获取选课列表
 function courseInform(typeId){
   $.ajax({
@@ -15,13 +38,49 @@ function courseInform(typeId){
       if (res.res == '0') {
         document.getElementById('collapseOnePanel').innerHTML = '';
       }
+       arr = [];
+      for(var i = 0; i < res.data.length; i++){
+        if (res.data[i].valid == '1') {
+          arr.push(res.data[i]);
+        }
+        res.data[i].checked = '0';
+      }
       console.log(res);
-      arr = res.data;
-      zhuRu();
+      console.log('valid',arr);
+      findChoosed(typeId);
     }
   });
 }
-courseInform('openCourse');
+
+
+//获取已选列表
+function findChoosed(typeId){
+   $.ajax({
+    type:'get',
+    url:'../ChooseCourse.jsp',
+    data:{
+      'api':'courseChoosed',
+      'typeId':typeId,
+      'stuNum':$('header span label').attr('data')
+    },
+    success:function(res){
+     if (res.res == '0') {
+      zhuRu();
+      return;
+     }
+    console.log(res);
+     for(var i = 0; i < arr.length; i++){
+      for(var j = 0; j < res.data.length; j++){
+        if (res.data[j].subject_num == arr[i].id) {
+          arr[i].checked = '1';
+        }
+      }
+     }
+    zhuRu();
+    }
+  });
+}
+
 
 // 模块转换时数据改变 获取该模块选课列表
 $('#headNav li').on('click',function(){
@@ -90,30 +149,53 @@ $('#search').on('click',function(){
 
 // 选择
 $('#submit').on('click',function(){
-  console.log($('.choose:checked').val());
-//   $.ajax({
-//     type:'get',
-//     url:'../ChooseCourse.jsp',
-//     data:{
-//       'api':'chooseCourse',
-//       'subjectNum':$('.choose:checked').val()
-//     },
-//     success:function(res){
+  var subjectNumArr = [];
+  for(var i = 0; i < $('.choose:checked').length; i++){
+    subjectNumArr.push($('.choose:checked')[i].parentNode.parentNode.id);
+  }
+  console.log(subjectNumArr);
+  if ($('#headNav li.active').attr('data') == 'openCourse') {
+    if (!subjectNumArr.length) {alert('请先选择课程！');return;};
+    if (subjectNumArr.length > 2) {
+      alert('公选课最多选两门哟！');
+      return;
+    }
+  }
+  $.ajax({
+    type:'get',
+    url:'../ChooseCourse.jsp',
+    data:{
+      'api':'chooseCourse',
+      'stuNum':$('header span label').attr('data'),
+      'stuName':$('header span label').html(),
+      'subjectNum':subjectNumArr,
+      'status':'1',//是否退选
+      'typeId':$('#headNav li.active').attr('data'),//选课类型
+      'is_open':'1'//是否有效
+    },
+    success:function(res){
+      console.log(res);
+      if (res.res == '0') {
+        alert(res.msg);
+        return;
+      }
+      alert('选课成功！');
+      window.location.reload();
+    }
+});
+});
 
-//     }
-// });
-})
 
 // 注入
 function zhuRu(){
-  var arrs = arr.slice(0,5);
-  if (arr.length > 5) {
-    pageNum = parseInt(arr.length/5)+1;
+  var arrs = arr.slice(0,10);
+  if (arr.length > 10) {
+    pageNum = Math.ceil(arr.length/10);
     pageArr = [];
     for(var i = 1; i <= pageNum;i++){
       pageArr.push(i);
     }
-    console.log(pageNum,pageArr);
+    // console.log(pageNum,pageArr);
     var data = {
       isAdmin: true,
       list:pageArr
@@ -141,7 +223,7 @@ function page(num){
   $('#next').removeClass('disabled');
   $('.pageli').removeClass('active');
   $('.pageli:nth-of-type('+(num+1)+')').addClass('active');
-  var arrs =  arr.slice((num-1)*5,num*5);
+  var arrs =  arr.slice((num-1)*10,num*10);
   var data = {
     isAdmin: true,
     list:arrs
@@ -169,4 +251,4 @@ function next(){
   return Page;
 }
 
-$(function () { $('#collapseOne').collapse('show')});
+// $(function () { $('#collapseOne').collapse('show')});

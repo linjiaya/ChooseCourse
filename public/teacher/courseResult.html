@@ -14,6 +14,7 @@
       <![endif]-->
       <link rel="stylesheet" href="../css/courseSystem.css">
       <link rel="stylesheet" href="../css/courseDelete.css">
+      <script src="../js/template-native.js"></script>
 </head>
 <body>
 
@@ -21,16 +22,17 @@
     <ul>
       <li><a href="courseAnnunciate.html"><span class="navIcon" id="annunciate"></span><p>选课公告</p></a></li>
       <li><a class="active" href="courseResult.html"><span class="navIcon" id="result"></span><p>选课结果</p></a></li>
+      <li><a href="courseDelete.html"><span class="navIcon" id="delete"></span><p>退课</p></a></li>
       <li><a href="mySchedule.html"><span class="navIcon" id="schedule"></span><p>我的课表</p></a></li>
     </ul>
   </div>
   <div class="contain">
-    <header><h3>大学生网上选课系统</h3></header>
+    <header><h3>大学生网上选课系统</h3><span><label></label>｜<a href="#" class="safeExit">安全退出</a></span></header>
     <div class="main">
       <ul class="nav nav-tabs nav-justified" id="headNav">
-        <li class="active"><a data-toggle="tab" href="#part1">公选课</a></li>
-        <li><a data-toggle="tab" href="#part2">实验课</a></li>
-        <li><a data-toggle="tab" href="#part3">方向课</a></li>
+        <li class="active" data="openCourse"><a data-toggle="tab" href="#part1">公选课</a></li>
+        <li data="labCourse"><a data-toggle="tab" href="#part2">实验课</a></li>
+        <li data="dirCourse"><a data-toggle="tab" href="#part3">方向课</a></li>
       </ul>
       <div class="white">
       <div class="tab-content">
@@ -41,16 +43,24 @@
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordion" 
                      href="#collapseOne">
-                    <span class="glyphicon glyphicon-hand-right"></span> 有效课程
+                    <span class="glyphicon glyphicon-hand-right"></span> 有效已选课程
                   </a>
                 </h4>
               </div>
               <div id="collapseOne" class="panel-collapse collapse in">
                 <div class="panel-body">
+                <div id="openValidTable">
+                  
+                </div>
+
+          <!-- script 代码添加 开始-->
+                <script id="openValidTemplate" type="text/html">
+                  <% if (isAdmin) { %>
                   <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                       <thead>
                         <tr>
+                          <th>&nbsp;</th>
                           <th>课程号</th>
                           <th>课程名</th>
                           <th>学分</th>
@@ -64,56 +74,30 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
+                        <% for (var i = 0;i < list.length; i++) { %>
+                        <tr id="<%= list[i].id%>">
+                          <td><input type="checkbox" name="openCourse" value="<%= list[i].id%>"></td>
+                          <td><%= list[i].id %></td>
+                          <td><%= list[i].subject_name %></td>
+                          <td><%= list[i].credit %></td>
+                          <td><%= list[i].teacher_name %></td>
+                          <td><%= list[i].place %></td>
+                          <td><%= list[i].start_week %>～<%= list[i].end_week %>周</td>
+                          <td><%= list[i].course_section %>节</td>
+                          <td><%= list[i].course_weekday %></td>
+                          <td onclick="goList(<%= list[i].id %>,'<%= list[i].subject_name %>');"><a href="#"><%= list[i].check_people %></a></td>
+                          <td><%= list[i].people_max %></td>
                         </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
+                        <% } %>
                       </tbody>
                     </table>
+                  </div>
+                  <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
+
+                  <div>
+                    <button class="btn btn-success">退课</button>
                   </div>
                 </div><!-- panel-body 结束 -->
               </div>
@@ -124,16 +108,24 @@
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordion" 
                      href="#collapseTwo">
-                    <span class="glyphicon glyphicon-hand-right"></span> 无效课程
+                    <span class="glyphicon glyphicon-hand-right"></span> 无效已选课程
                   </a>
                 </h4>
               </div>
               <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
+                <div id="openNoValidTable">
+                  
+                </div>
+
+          <!-- script 代码添加 开始-->
+                <script id="openNoValidTemplate" type="text/html">
+                  <% if (isAdmin) { %>
                   <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                       <thead>
                         <tr>
+                          <th>&nbsp;</th>
                           <th>课程号</th>
                           <th>课程名</th>
                           <th>学分</th>
@@ -147,32 +139,30 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
+                        <% for (var i = 0;i < list.length; i++) { %>
+                        <tr id="<%= list[i].id%>">
+                          <td><input type="checkbox" name="openCourseNo" value="<%= list[i].id%>"></td>
+                          <td><%= list[i].id %></td>
+                          <td><%= list[i].subject_name %></td>
+                          <td><%= list[i].credit %></td>
+                          <td><%= list[i].teacher_name %></td>
+                          <td><%= list[i].place %></td>
+                          <td><%= list[i].start_week %>～<%= list[i].end_week %>周</td>
+                          <td><%= list[i].course_section %>节</td>
+                          <td><%= list[i].course_weekday %></td>
+                          <td onclick="goList(<%= list[i].id %>,'<%= list[i].subject_name %>');"><a href="#"><%= list[i].check_people %></a></td>
+                          <td><%= list[i].people_max %></td>
                         </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
+                        <% } %>
                       </tbody>
                     </table>
+                  </div>
+                  <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
+
+                  <div>
+                    <button class="btn btn-success">退课</button>
                   </div>
                 </div>
               </div>
@@ -186,16 +176,24 @@
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordion1" 
                      href="#collapseThree">
-                    <span class="glyphicon glyphicon-hand-right"></span> 实验课课程
+                    <span class="glyphicon glyphicon-hand-right"></span> 已选课程
                   </a>
                 </h4>
               </div>
               <div id="collapseThree" class="panel-collapse collapse in">
                 <div class="panel-body">
+                <div id="labTable">
+                  
+                </div>
+
+          <!-- script 代码添加 开始-->
+                <script id="labTemplate" type="text/html">
+                  <% if (isAdmin) { %>
                   <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                       <thead>
                         <tr>
+                          <th>&nbsp;</th>
                           <th>课程号</th>
                           <th>课程名</th>
                           <th>学分</th>
@@ -209,56 +207,30 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
+                        <% for (var i = 0;i < list.length; i++) { %>
+                        <tr id="<%= list[i].id%>">
+                          <td><input type="checkbox" name="labCourse" value="<%= list[i].id%>"></td>
+                          <td><%= list[i].id %></td>
+                          <td><%= list[i].subject_name %></td>
+                          <td><%= list[i].credit %></td>
+                          <td><%= list[i].teacher_name %></td>
+                          <td><%= list[i].place %></td>
+                          <td><%= list[i].start_week %>～<%= list[i].end_week %>周</td>
+                          <td><%= list[i].course_section %>节</td>
+                          <td><%= list[i].course_weekday %></td>
+                          <td onclick="goList(<%= list[i].id %>,'<%= list[i].subject_name %>');"><a href="#"><%= list[i].check_people %></a></td>
+                          <td><%= list[i].people_max %></td>
                         </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
+                        <% } %>
                       </tbody>
                     </table>
+                  </div>
+                  <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
+
+                  <div>
+                    <button class="btn btn-success">退课</button>
                   </div>
                 </div>
               </div>
@@ -272,16 +244,24 @@
                 <h4 class="panel-title">
                   <a data-toggle="collapse" data-parent="#accordion2" 
                      href="#collapseFour">
-                    <span class="glyphicon glyphicon-hand-right"></span> 方向课课程
+                    <span class="glyphicon glyphicon-hand-right"></span> 已选课程
                   </a>
                 </h4>
               </div>
               <div id="collapseFour" class="panel-collapse collapse in">
                 <div class="panel-body">
+                <div id="dirTable">
+                  
+                </div>
+
+          <!-- script 代码添加 开始-->
+                <script id="dirTemplate" type="text/html">
+                  <% if (isAdmin) { %>
                   <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                       <thead>
                         <tr>
+                          <th>&nbsp;</th>
                           <th>课程号</th>
                           <th>课程名</th>
                           <th>学分</th>
@@ -295,56 +275,30 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
+                        <% for (var i = 0;i < list.length; i++) { %>
+                        <tr id="<%= list[i].id%>">
+                          <td><input type="checkbox" name="dirCourse" value="<%= list[i].id%>"></td>
+                          <td><%= list[i].id %></td>
+                          <td><%= list[i].subject_name %></td>
+                          <td><%= list[i].credit %></td>
+                          <td><%= list[i].teacher_name %></td>
+                          <td><%= list[i].place %></td>
+                          <td><%= list[i].start_week %>～<%= list[i].end_week %>周</td>
+                          <td><%= list[i].course_section %>节</td>
+                          <td><%= list[i].course_weekday %></td>
+                          <td onclick="goList(<%= list[i].id %>,'<%= list[i].subject_name %>');"><a href="#"><%= list[i].check_people %></a></td>
+                          <td><%= list[i].people_max %></td>
                         </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
-                        <tr id="">
-                          <td>01</td>
-                          <td>中国传统文化</td>
-                          <td>1.5</td>
-                          <td>徐坤s</td>
-                          <td>三教501</td>
-                          <td>6～15周</td>
-                          <td>9～12节</td>
-                          <td>星期三</td>
-                          <td>170</td>
-                          <td>200</td>
-                        </tr>
+                        <% } %>
                       </tbody>
                     </table>
+                  </div>
+                  <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
+
+                  <div>
+                    <button class="btn btn-success">退课</button>
                   </div>
                 </div>
               </div>
@@ -359,6 +313,7 @@
    <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
    <!-- 包括所有已编译的插件 -->
    <script src="../bootstrap/js/bootstrap.min.js"></script>
-   <script src="../js/courseDelete.js"></script>
+   <script src="../js/cookies.js"></script>
+   <script src="../js/teacher_courseResult.js"></script>
 </body>
 </html>

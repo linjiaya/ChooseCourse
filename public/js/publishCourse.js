@@ -1,3 +1,26 @@
+// 判断是否有cookie
+$(function(){
+  $.getJSON('../cookies',function(data){
+    if(data.res == '0'){
+      alert(data.msg);
+      window.location.href='../login.html';
+      return;
+    }
+    //不是就清除缓存
+    if (data.data[0].typeId != '0') {
+      $.getJSON('../deleteCookies',function(res){
+      })
+      window.location.href='../login.html';
+      return;
+    }
+    console.log(data);
+    $('header span').attr('data',data.data[0].typeId);
+    $('header span label').html(data.data[0].userId);
+    $('header span label').attr('data',data.data[0].userId);
+    courseInform();
+  });
+});
+
 // 初始页面状态
 $(function () { 
 	$('#collapseOne').collapse('hide');
@@ -70,6 +93,12 @@ $('input[type="radio"]').on('click',function(){
 	courseInform();
 });
 
+
+var index = 2; //数据注入次数
+var arr = [];  //定义数组接收列表
+var pageNum;
+var pageArr = [];//页数
+
 // 获取选课列表
 function courseInform(){
 	$.ajax({
@@ -86,9 +115,32 @@ function courseInform(){
     	}
 	    console.log(res);
       $('#collapseTwo').collapse('show');
+      res.data.sort(
+       function compareFunction(param1,param2){
+          return param2.id - param1.id; 
+       });
+      arr = res.data;
+      var arrs = arr.slice(0,10);
+      if (arr.length > 10) {
+        pageNum = Math.ceil(arr.length/10);
+        pageArr = [];
+        for(var i = 1; i <= pageNum;i++){
+          pageArr.push(i);
+        }
+        // console.log(pageNum,pageArr);
+        var data = {
+          isAdmin: true,
+          list:pageArr
+        }
+        var html2 = template('pageNav',data);
+        document.getElementById('pageNum').innerHTML = html2;
+      }
+      else{
+        document.getElementById('pageNum').innerHTML = '';
+      }
 			var data = {
 				isAdmin: true,
-				list:res.data
+				list:arrs
 			}
 			var html = template('addCourseList',data);
 			document.getElementById('collapseTwoPanel').innerHTML = html;
@@ -96,7 +148,7 @@ function courseInform(){
 		}
 	});
 }
-courseInform();
+
 
 // 编辑选课
 function edit(id){
@@ -207,3 +259,42 @@ function error(id){
 function errorHide(id){
   $(id).popover('destroy');
 }
+
+
+
+//分页显示
+var Page = 1;
+function page(num){
+  Page = num;
+  $('#last').removeClass('disabled');
+  $('#next').removeClass('disabled');
+  $('.pageli').removeClass('active');
+  $('.pageli:nth-of-type('+(num+1)+')').addClass('active');
+  var arrs =  arr.slice((num-1)*10,num*10);
+  var data = {
+    isAdmin: true,
+    list:arrs
+  }
+  var html = template('addCourseList',data);
+  document.getElementById('collapseTwoPanel').innerHTML = html;
+  return page;
+}
+function last(){
+  if (Page == 1) {
+    $('#last').addClass('disabled');
+    return;
+  }
+  Page--;
+  page(Page);
+  return page;
+}
+function next(){
+  if (Page == pageNum) {
+    $('#next').addClass('disabled');
+    return;
+  }
+  Page++;
+  page(Page);
+  return Page;
+}
+

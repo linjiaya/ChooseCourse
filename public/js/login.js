@@ -25,7 +25,7 @@ function submit() {
     error('#password');
     return;
   }
-  if ($('#remember').attr('checked')) {
+  if ($('#remember').prop('checked')) {
     cookieDay = 1000*60*60*24*3;//3天
   };
   $.ajax({

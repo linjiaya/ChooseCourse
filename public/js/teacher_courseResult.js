@@ -6,7 +6,7 @@ $(function(){
       window.location.href='../login.html';
       return;
     }
-    if (data.data[0].typeId != '1') {
+    if (data.data[0].typeId != '2') {
       $.getJSON('../deleteCookies',function(res){
       })
       window.location.href='../login.html';
@@ -16,18 +16,19 @@ $(function(){
     $('header span').attr('data',data.data[0].typeId);
     $('header span label').html(data.data[0].username);
     $('header span label').attr('data',data.data[0].userId);
-    findChoosed('openCourse');
+    courseInformByteacher('openCourse');
   });
 });
-//查找已选课程
-function findChoosed(typeId){
+
+//查找需要授课的课程
+function courseInformByteacher(typeId){
    $.ajax({
     type:'get',
     url:'../ChooseCourse.jsp',
     data:{
-      'api':'courseChoosedbyStudent',
+      'api':'courseInformByteacher',
       'typeId':typeId,
-      'stuNum':$('header span label').attr('data')
+      'teacher':$('header span label').attr('data')
     },
     success:function(res){
      if (res.res == '0') {
@@ -97,11 +98,10 @@ function findChoosed(typeId){
 
 // 模块转换时数据改变 获取该模块选课列表
 $('#headNav li').on('click',function(){
-  findChoosed($(this).attr('data'));
+  courseInformByteacher($(this).attr('data'));
 });
 
-
-/*--------------------------- 退课部分 ----------------------------------*/
+/*------------------------------- 退课部分 --------------------------------------*/
 $('#collapseOne button').on('click',function(){
   Delete('openCourse');
 });
@@ -116,27 +116,40 @@ $('#collapseFour button').on('click',function(){
 });
 function Delete(name){
   var subjectNumArr = [];
+  var typeId = name;
   for(var i = 0; i < $('input[name="'+name+'"]:checked').length; i++){
     subjectNumArr.push($('input[name="'+name+'"]:checked')[i].value);
   }
-  console.log('subjectNumArr',subjectNumArr)
+  if (name == 'openCourseNo') {
+    typeId = 'openCourse';
+  }
+  
+  console.log('subjectNumArr',subjectNumArr);
   if (subjectNumArr.length <= 0) {
     alert('您尚未选择课程！');
     return;
   }
+  var day = new Date();
+  var time = day.getFullYear()+'-'+(day.getMonth()+1)+'-'+day.getDate();
+  console.log(time);console.log('typeId',typeId);
  $.ajax({
     type:'get',
     url:'../ChooseCourse.jsp',
     data:{
-      'api':'courseDeletebyStudent',
-      'stuNum':$('header span label').attr('data'),
-      'subjectNumArr':subjectNumArr
+      'api':'courseDeletebyTeacher',
+      'teacherNum':$('header span label').attr('data'),
+      'subjectNumArr':subjectNumArr,
+      'time':time,
+      'typeId':typeId,
+      'status':'0'
     },
     success:function(res){
       console.log(res);
-      alert('退课成功！',function(){
-       window.location.reload();
-      })
+      // window.location.reload();
     }
   });
+}
+/*--------------------- 跳转学生名单 ----------------------------*/
+function goList(subjectNum,subjectName){
+  window.location.href = 'peopleList.html?subjectNum='+subjectNum+'&subjectName='+escape(subjectName);
 }

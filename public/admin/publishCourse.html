@@ -23,11 +23,13 @@
       <li><a href="publishAunnciate.html"><span class="navIcon" id="annunciate"></span><p>发布通知</p></a></li>
       <li><a class="active" href="publishCourse.html"><span class="navIcon" id="online"></span><p>发布选课</p></a></li>
       <li><a href="courseResult.html"><span class="navIcon" id="result"></span><p>选课结果</p></a></li>
+      <li><a href="courseDelete.html"><span class="navIcon" id="delete"></span><p>退课审批</p></a></li>
       <li><a href="endChoose.html"><span class="navIcon" id="endChoose"></span><p>结束选课</p></a></li>
+      <!-- <li><a href="addPeople.html"><span class="navIcon" id="addPeople"></span><p>添加人员</p></a></li> -->
     </ul>
   </div>
   <div class="contain">
-    <header><h3>大学生网上选课系统</h3></header>
+    <header><h3>大学生网上选课系统</h3><span><label></label>｜<a href="#" class="safeExit">安全退出</a></span></header>
     <div class="main">
       <div class="white">
       <form class="form-horizontal" role="form">
@@ -217,6 +219,24 @@
                   </script>
             <!-- script 代码添加 结束-->
 
+                  <!-- 分页 -->
+                  <div class="pageNav" id="pageNum">
+
+                  </div>
+            <!-- script 代码添加 开始-->
+                  <script id="pageNav" type="text/html">
+                    <% if (isAdmin) { %>
+                    <ul class="pagination">
+                      <li id="last" class="disabled" onclick="last()"><a href="#">&laquo;</a></li>
+                      <li class="pageli active" onclick="page(1)"><a href="#">1</a></li>
+                      <% for (var i = 1;i < list.length; i++) { %>
+                      <li class="pageli" onclick="page(<%= list[i] %>)"><a href="#"><%= list[i] %></a></li>
+                      <% } %>
+                      <li id="next" onclick="next()"><a href="#">&raquo;</a></li>
+                    </ul>
+                    <% } %>
+                  </script>
+            <!-- script 代码添加 结束-->
               </div>
             </div><!-- panel 结束 -->
           </div><!-- panel-group 结束-->
@@ -230,6 +250,7 @@
    <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
    <!-- 包括所有已编译的插件 -->
    <script src="../bootstrap/js/bootstrap.min.js"></script>
+   <script src="../js/cookies.js"></script>
    <script src="../js/publishCourse.js"></script>
 </body>
 </html>

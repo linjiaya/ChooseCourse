@@ -1,9 +1,0 @@
-[
-{"stuNum":"0101","stuName":"杨博其","stuSex":"男","stuCollage":"软件学院","stuMajor":"软件工程","stuIDCard":"363539199601010011","stuPassword":"123456","stuPhone":"13111111111"},	
-{"stuNum":"0102","stuName":"邓璇","stuSex":"女","stuCollage":"软件学院","stuMajor":"物联网","stuIDCard":"363539199601010012","stuPassword":"223456","stuPhone":"13211111111"},	
-{"stuNum":"0103","stuName":"王雪梅","stuSex":"女","stuCollage":"软件学院","stuMajor":"数字媒体","stuIDCard":"363539199601010013","stuPassword":"323456","stuPhone":"13311111111"},	
-{"stuNum":"0104","stuName":"黄玉","stuSex":"男","stuCollage":"软件学院","stuMajor":"网络工程","stuIDCard":"363539199601010014","stuPassword":"423456","stuPhone":"13411111111"},	
-{"stuNum":"0105","stuName":"齐效成","stuSex":"男","stuCollage":"测绘学院","stuMajor":"测绘工程","stuIDCard":"363539199601010015","stuPassword":"523456","stuPhone":"13511111111"},	
-{"stuNum":"0106","stuName":"潘瑾","stuSex":"女","stuCollage":"外国语学院","stuMajor":"国际英语","stuIDCard":"363539199601010016","stuPassword":"623456","stuPhone":"13611111111"},	
-{"stuNum":"0107","stuName":"林佳","stuSex":"女","stuCollage":"经济管理学院","stuMajor":"会计","stuIDCard":"363539199601010017","stuPassword":"723456","stuPhone":"13711111111"}	
-]

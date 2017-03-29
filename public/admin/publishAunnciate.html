@@ -22,11 +22,13 @@
       <li><a class="active" href="publishAunnciate.html"><span class="navIcon" id="annunciate"></span><p>发布通知</p></a></li>
       <li><a href="publishCourse.html"><span class="navIcon" id="online"></span><p>发布选课</p></a></li>
       <li><a href="courseResult.html"><span class="navIcon" id="result"></span><p>选课结果</p></a></li>
+      <li><a href="courseDelete.html"><span class="navIcon" id="delete"></span><p>退课审批</p></a></li>
       <li><a href="endChoose.html"><span class="navIcon" id="endChoose"></span><p>结束选课</p></a></li>
+      <!-- <li><a href="addPeople.html"><span class="navIcon" id="addPeople"></span><p>添加人员</p></a></li> -->
     </ul>
   </div>
   <div class="contain">
-    <header><h3>大学生网上选课系统</h3></header>
+    <header><h3>大学生网上选课系统</h3><span><label></label>｜<a href="#" class="safeExit">安全退出</a></span></header>
     <div class="main">
       <div class="white">
       <form class="form-horizontal" role="form">
@@ -36,7 +38,7 @@
           <div class="col-sm-7">
             <input type="radio" name="typeCourse" value="openCourse" id="openCourse" checked>
             <input type="radio" name="typeCourse" value="labCourse" id="labCourse">
-            <input type="radio" name="typeCourse" value="directionCourse" id="directionCourse">
+            <input type="radio" name="typeCourse" value="dirCourse" id="dirCourse">
             <div class="btn-group btn-group-sm">
               <button type="button" class="btn btn-default"><label for="openCourse">公选课</label></button>
               <button type="button" class="btn btn-default"><label for="labCourse">实验课</label></button>
@@ -45,32 +47,23 @@
             
           </div>
         </div>
-<!-- 选课开始时间 -->
-        <div class="form-group" id="setTimeStart">
-          <label class="col-sm-5 control-label">选课开始时间：</label>
-          <div class="col-sm-7">
-            <select name="" id="" class="btn btn-default">
-              <option value="2017">2017</option>
-            </select>
-            <label>年</label>
-            <select name="" id="" class="btn btn-default">
-              <option value="1">1</option>
-            </select>
-            <label>月</label>
-            <select name="" id="" class="btn btn-default">
-              <option value="11">11</option>
-            </select>
-            <label>年</label>
-          </div>
-        </div>
 <!-- 上传通知公告 -->
         <div class="form-group" id="upFile">
           <label class="col-sm-5 control-label">上传通知公告：</label>
           <div class="col-sm-7">
-            <button class="btn btn-info"><label for="inputfile">+上传</label></button>
+            <span class="btn btn-info" id="upfile"><label for="inputfile">+上传</label></span>
             <input type="file" id="inputfile" class="sr-only">
           </div>
         </div>
+
+<!-- 选课开始时间 -->
+        <div class="form-group" id="setTimeStart">
+          <label class="col-sm-5 control-label">选课开始时间：</label>
+          <div class="col-sm-7">
+            <input type="date" class="form-control">
+          </div>
+        </div>
+
         <div class="form-group">
           <button class="btn btn-success" id="publish">确认发布</button>
         </div>
@@ -82,6 +75,7 @@
    <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
    <!-- 包括所有已编译的插件 -->
    <script src="../bootstrap/js/bootstrap.min.js"></script>
+   <script src="../js/cookies.js"></script>
    <script src="../js/publishAnnunciate.js"></script>
 </body>
 </html>

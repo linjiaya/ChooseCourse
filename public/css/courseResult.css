@@ -1,8 +1,8 @@
 .main .white{
-  border-top: 1px solid #ddd;
+  // border-top: 1px solid #ddd;
 }
 .panel-group .panel{
-  border-top: 0;
+  // border-top: 0;
 }
 caption{
   color: red;
@@ -28,4 +28,11 @@ td{
 }
 #successNoValidList td{
   color:#aaa;
+}
+/*--------------- 这是管理员部分的退课审批的内容 -----------------------------*/
+.admin_btn{
+  height: 35px;
+}
+#teacherSelect{
+  width: 10rem;
 }

@@ -15,6 +15,7 @@ body{
   height: auto;
   min-height:700px;
 }
+
 /*左边导航*/
 .navigation{
   position:absolute;
@@ -26,7 +27,7 @@ body{
 }
 .navigation ul{
   position: fixed;
-  top: 60px;
+  top: 50px;
   left: 0;
   width: 120px;
 }
@@ -48,9 +49,12 @@ body{
 .navigation li a:hover .navIcon,.navigation li a.active .navIcon{
   background-image:url('../img/icon_active.png');
 }
+.navigation li a:hover #addPeople,.navigation li a.active #addPeople{
+  background-image:url('../img/addpeople_active.png');
+}
 .navigation li .navIcon{
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: block;
   margin:.4rem auto;
   background-image:url('../img/icon.png');
@@ -59,19 +63,22 @@ body{
   background-position: 0 0;
 }
 #online{
-  background-position: -60px 0;
+  background-position: -50px 0;
 }
 #result{
-  background-position: -120px 0;
+  background-position: -100px 0;
 }
 #delete{
-  background-position: -240px 0;
+  background-position: -200px 0;
 }
 #schedule{
-  background-position: -180px 0;
+  background-position: -150px 0;
 }
 #endChoose{
-  background-position: -300px 0;
+  background-position: -250px 0;
+}
+#addPeople{
+  background-image: url('../img/addpeople.png');
 }
 /*内容部分*/
 .contain{
@@ -83,6 +90,7 @@ header{
   background-color: white;
   color: #2b333e;
   display: block;
+  position: relative;
 }
 h3{
   margin:0;
@@ -90,6 +98,17 @@ h3{
   line-height: 50px;
   padding-left: 1rem;
   letter-spacing: .1em;
+}
+header span{
+  width: 10rem;
+  height: 25px;
+  display: block;
+  position: absolute;
+  right: 30px;top: 25px;
+  text-align: right;
+}
+header span label{
+  font-size: 1.4rem;
 }
 .main{
   margin: 30px;
@@ -110,6 +129,9 @@ h3{
 }
 
 /*折叠框*/
+.panel-group .panel:not(:first-child) {
+    margin-top: 5px;
+}
 .panel-group .panel{
   border-radius: 0px; 
   border-left: 0;

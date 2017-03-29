@@ -1,0 +1,32 @@
+.contentDiv{
+  margin-bottom: 20px;
+}
+.icon{
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  padding: 15px 0 5px;
+}
+.glyphicon-user{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #337AB7;
+  text-align: center;
+  line-height: 60px;
+  border:1px solid #337AB7;
+}
+table{
+  width: 60%;
+  margin:10px auto;
+}
+th{
+  padding: 10px 5% 0;
+}
+td{
+  padding: 0 5%;
+}
+button{
+  margin:10px 23%;
+  width: 54%;
+}

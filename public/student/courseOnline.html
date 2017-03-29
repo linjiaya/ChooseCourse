@@ -28,7 +28,7 @@
     </ul>
   </div>
   <div class="contain">
-    <header><h3>大学生网上选课系统</h3></header>
+    <header><h3>大学生网上选课系统</h3><span><label></label>｜<a href="#" class="safeExit">安全退出</a></span></header>
     <div class="main">
       <ul class="nav nav-tabs nav-justified" id="headNav">
         <li class="active" data="openCourse"><a data-toggle="tab" href="#part1">公选课</a></li>
@@ -90,7 +90,11 @@
                       <tbody>
                         <% for (var i = 0;i < list.length; i++) { %>
                         <tr id="<%= list[i].id%>">
-                          <td><input type="checkbox" class="choose" name="<%= list[i].type_id%>" value="<%= list[i].id %>"></td>
+                          <td>
+                          <% if(list[i].checked == '0' && list[0].status == '0') { %>
+                          <input type="checkbox" class="choose" name="<%= list[i].type_id%>" value="<%= list[i].id %>">
+                          <% } %>
+                          </td>
                           <td><%= list[i].id %></td>
                           <td><%= list[i].subject_name %></td>
                           <td><%= list[i].credit %></td>
@@ -141,6 +145,7 @@
    <script src="../bootstrap/js/jquery-3.1.1.min.js"></script>
    <!-- 包括所有已编译的插件 -->
    <script src="../bootstrap/js/bootstrap.min.js"></script>
+   <script src="../js/cookies.js"></script>
    <script src="../js/courseOnline.js"></script>
 </body>
 </html>
