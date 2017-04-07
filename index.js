@@ -714,7 +714,7 @@ app.get('/ChooseCourse.jsp',function (req,res){
   if (req.query.api === 'addNews') {
     connection.query('select * FROM news where type_id = "'+req.query.typeId+'"',function(err,rows,fields){
       if (rows.length <= 0) {
-        var news = {'type_id':req.query.typeId,'detail':req.query.detail,'time':req.query.time};
+        var news = {'type_id':req.query.typeId,'detail':req.query.detail,'time':req.query.time,'is_open':'0'};
         connection.query('insert INTO news SET ?',news,function(err,result){
           res.send({'res':'1','msg':'添加成功！'});
         });
@@ -730,6 +730,44 @@ app.get('/ChooseCourse.jsp',function (req,res){
       }
     })
     return;
+  }
+
+  /*
+  @判断什么时候可以选课，
+    *就判断时间大小和is_open为1时可以选课
+    *判断is_open为0时不可以选课
+  */
+  /*---------------  查看公告 ---------------------------*/
+  if (req.query.api === 'getNews') {
+    connection.query('select * FROM news where type_id ="'+req.query.typeId+'"',function(err,rows,fields){
+      if (rows.length <= 0) {
+        res.send({'res':'0','msg':'该部分课程暂时不能选课！'});
+        return;
+      }
+      else{
+        if (rows[0].is_open == '0') {
+          res.send({'res':'0','msg':'该部分课程已暂停选课！'});
+          return;
+        }
+        if (rows[0].is_open == '1') {
+          res.send({'res':'1','msg':'该部分课程选课进行中！','data':rows});
+        }
+      }
+    })
+  }
+  /*---------------  结束选课 ---------------------------*/
+  if (req.query.api === 'endChoose') {
+    connection.query('select * FROM news where type_id = "'+req.query.typeId+'"',function(err,rows,fields){
+      if (rows.length <= 0) {
+        res.send({'res':'0','msg':'该部分选课暂时未发布选课通知，无法结束选课!'});
+        return;
+      }
+      else{
+        connection.query('update news set is_open = "0"',function(err,result){
+          res.send({'res':'1','msg':'该部分选课结束设置成功！'});
+        })
+      }
+    })
   }
 
   /*------------------ 获取学生表 -------------------------*/
@@ -791,7 +829,7 @@ var connection = mysql.createConnection({
 });
 connection.connect();  //链接数据库
 
-// connection.query('UPDATE course SET status = "0" where id = 10010',function(err,rows,fields){
+// connection.query('UPDATE news SET is_open = "1" where id = 10003',function(err,rows,fields){
 //   if (err) throw err;
 
 //   console.log('The solution is: ', rows);
@@ -801,7 +839,7 @@ connection.connect();  //链接数据库
 //   if (err) throw err;
 //   console.log('insert lisi');     
 // });
-connection.query('select * FROM course', function(err, rows, fields) {
+connection.query('select * FROM reject_detail', function(err, rows, fields) {
   if (err) throw err;
 
   console.log('学生表: ', rows);

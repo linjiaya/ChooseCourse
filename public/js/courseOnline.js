@@ -24,30 +24,49 @@ var index = 2; //数据注入次数
 var arr = [];  //定义数组接收列表
 var pageNum;
 var pageArr = [];//页数
-
+var is_open = false;
   // 获取选课列表
 function courseInform(typeId){
   $.ajax({
     type:'get',
     url:'../ChooseCourse.jsp',
     data:{
-      'api':'courseInform',
+      'api':'getNews',
       'typeId':typeId
     },
-    success:function(res){
-      if (res.res == '0') {
-        document.getElementById('collapseOnePanel').innerHTML = '';
+    success:function(result){
+      arr = [];
+      if (result.res == '0') {
+        $('#collapseOnePanel').html(result.msg);
+        $('#submitDiv').hide();
+        document.getElementById('pageNum').innerHTML = '';
+        return;
       }
-       arr = [];
-      for(var i = 0; i < res.data.length; i++){
-        if (res.data[i].valid == '1') {
-          arr.push(res.data[i]);
+      $.ajax({
+      type:'get',
+      url:'../ChooseCourse.jsp',
+      data:{
+        'api':'courseInform',
+        'typeId':typeId
+      },
+      success:function(res){
+        if (res.res == '0') {
+          document.getElementById('collapseOnePanel').innerHTML = '';
+          $('#submitDiv').hide();
+          return;
         }
-        res.data[i].checked = '0';
+        $('#submitDiv').show();
+        for(var i = 0; i < res.data.length; i++){
+          if (res.data[i].valid == '1') {
+            arr.push(res.data[i]);
+          }
+          res.data[i].checked = '0';
+        }
+        console.log(res);
+        console.log('valid',arr);
+        findChoosed(typeId);
       }
-      console.log(res);
-      console.log('valid',arr);
-      findChoosed(typeId);
+    });
     }
   });
 }
@@ -189,6 +208,7 @@ $('#submit').on('click',function(){
 // 注入
 function zhuRu(){
   var arrs = arr.slice(0,10);
+  //页数注入
   if (arr.length > 10) {
     pageNum = Math.ceil(arr.length/10);
     pageArr = [];
@@ -206,6 +226,8 @@ function zhuRu(){
   else{
     document.getElementById('pageNum').innerHTML = '';
   }
+
+  // 课程注入
   $('#collapseOne').collapse('show');
   var data = {
     isAdmin: true,

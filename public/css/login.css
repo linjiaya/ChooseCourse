@@ -10,8 +10,8 @@ h1{
   font-size: 2.5em;
   font-style: italic;
   letter-spacing: .1em;
-  line-height: 80px;
-  margin-left: 200px;
+  line-height: 60px;
+  padding-bottom: 30px;
 }
 .bgImg{
   width: 100%;
@@ -21,18 +21,32 @@ h1{
 }
 img{
   height: 300px;
-  margin-left: 200px;
+  margin-left: 10%;
   float: left;
 }
 .loginMain{
   width: 300px;
   height: 380px;
-  margin:-40px 0 0 250px;
   padding: 15px 25px;
   background-color: rgba(98,98,98,0.6);
   float: left;
-  // box-shadow:10px 15px 3px #8b8a8a;
-  // -webkit-box-shadow: 10px 15px 3px #8b8a8a;
+  }
+
+@media(min-width:992px){
+  h1{
+    margin-left: 200px;
+  }
+  .loginMain{
+    margin:-40px 0 0 20%;
+  }
+}
+@media(max-width:992px){
+  h1{
+    text-align: center;
+  }
+  .loginMain{
+    margin:-40px 0 0 5%;
+  }
 }
 p{
   margin:30px auto 5px;
