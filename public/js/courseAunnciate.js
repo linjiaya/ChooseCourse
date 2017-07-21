@@ -16,7 +16,7 @@ $(function(){
     $('header span').attr('data',data.data[0].typeId);
     $('header span label').html(data.data[0].username);
     $('header span label').attr('data',data.data[0].userId);
-    getNews('openCourse')
+    getNews('openCourse');
   });
 });
 

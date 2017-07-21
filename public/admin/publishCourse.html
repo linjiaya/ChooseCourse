@@ -15,6 +15,7 @@
       <link rel="stylesheet" href="../css/courseSystem.css">
       <link rel="stylesheet" href="../css/publishCourse.css">
       <script src="../js/template-native.js"></script>
+      <link rel="shortcut icon" href="../img/favicon.ico">
 </head>
 <body>
 
@@ -68,7 +69,7 @@
                     
                     <div class="form-group col-sm-4">
                       <label for="subject" class="control-label">课程名</label>
-                      <input type="text" name="subject" id="subject" class="form-control" required>
+                      <input type="text" name="subject" id="subject" class="form-control" required data-container="body" data-toggle="popover" data-placement="top" data-content="课程名不能为空">
                     </div>
                     <div class="form-group col-sm-4">
                       <label for="credit" class="control-label">学分</label>
@@ -112,12 +113,42 @@
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
                         </select>
                         <label class="from-control">~</label>
                         <select name="endWeek" id="endWeek" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="结束周不可小于开始周" >
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
                         </select>
                       </div>
                     </div>
@@ -152,7 +183,7 @@
                     </div>
                     <div class="form-group col-sm-6">
                       <label for="peopleMax">可选人数</label>
-                      <input type="text" name="peopleMax" id="peopleMax" class="form-control" required>
+                      <input type="text" name="peopleMax" id="peopleMax" class="form-control" data="" required>
                     </div>
                   </div>
                   </div>
@@ -207,7 +238,7 @@
                           <td><%= list[i].start_week %>～<%= list[i].end_week %>周</td>
                           <td><%= list[i].course_section %>节</td>
                           <td><%= list[i].course_weekday %></td>
-                          <td><%= list[i].people_max %></td>
+                          <td data="<%= list[i].check_people%>"><%= list[i].people_max %></td>
                           <td><span class="glyphicon glyphicon-edit text-primary" onclick="edit(this.parentNode.parentNode.id)"></span></td>
                           <td><span class="glyphicon glyphicon-trash text-danger" onclick="Delete(this.parentNode.parentNode.id)"></span></td>
                         </tr>

@@ -42,6 +42,7 @@ $('#addCourse').on('click',function(){
 var listArray = [];
 $('#ensureAdd').on('click',function(){
   if (!$('#subject').val()) {
+    error('#subject');
     return false;
   }
   if (parseInt($('#startWeek').val()) > parseInt($('#endWeek').val())) {
@@ -165,6 +166,7 @@ function edit(id){
   $('#courseWeekday').val($('#'+id+' td:nth-child(8)').text());
   $('#place').val($('#'+id+' td:nth-child(5)').text());
   $('#peopleMax').val($('#'+id+' td:nth-child(9)').text());
+  $('#peopleMax').attr('data',$('#'+id+' td:nth-child(9)').attr('data'));
 
   var courseSection = $('#'+id+' td:nth-child(7)').text().substr(0, $('#'+id+' td:nth-child(7)').text().length-1)
   $('#courseSection').val(courseSection);
@@ -209,7 +211,7 @@ $('#ensureUpdate').on('click',function(){
       'courseWeekday':$('#courseWeekday').val(),
       'place':$('#place').val(),
       'peopleMax':$('#peopleMax').val(),
-      'checkPeople':'',
+      'checkPeople':$('#peopleMax').attr('data'),
       'targetMajor':'',
       'valid':'1',//1是有效
       'status':'0'//是否已满

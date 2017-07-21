@@ -14,6 +14,7 @@
       <![endif]-->
       <link rel="stylesheet" href="../css/courseSystem.css">
       <link rel="stylesheet" href="../css/publishAnnunciate.css">
+      <link rel="shortcut icon" href="../img/favicon.ico">
 </head>
 <body>
 
@@ -42,7 +43,7 @@
             <div class="btn-group btn-group-sm">
               <button type="button" class="btn btn-default"><label for="openCourse">公选课</label></button>
               <button type="button" class="btn btn-default"><label for="labCourse">实验课</label></button>
-              <button type="button" class="btn btn-default"><label for="directionCourse">方向课</label></button>
+              <button type="button" class="btn btn-default"><label for="dirCourse">方向课</label></button>
             </div> 
             
           </div>
@@ -51,7 +52,7 @@
         <div class="form-group" id="upFile">
           <label class="col-sm-5 control-label">上传通知公告：</label>
           <div class="col-sm-7">
-            <span class="btn btn-info" id="upfile"><label for="inputfile">+上传</label></span>
+            <span class="btn btn-info" id="upfile"><label for="inputfile" data-complete-text="上传成功">+上传</label></span><small class="filename"></small>
             <input type="file" id="inputfile" class="sr-only">
           </div>
         </div>
@@ -68,6 +69,26 @@
           <button class="btn btn-success" id="publish">确认发布</button>
         </div>
       </form>
+      <div class="show">
+        <div class="showDiv bg-success" id="openCourseShow">
+          <span class="glyphicon text-success">公</span>
+          <p><span class="showLabel text-success">上传文件：</span><span class="fileShow"></span></p>
+          <p><span class="showLabel text-success">选课开放时间：</span><span class="timeShow"></span></p>
+          <p><span class="showLabel text-success">选课状态：</span><span class="statusShow"></span></p>
+        </div>
+        <div class="showDiv bg-info" id="labCourseShow">
+          <span class="glyphicon text-info">实</span>
+          <p><span class="showLabel text-info">上传文件：</span><span class="fileShow"></span></p>
+          <p><span class="showLabel text-info">选课开放时间：</span><span class="timeShow"></span></p>
+          <p><span class="showLabel text-info">选课状态：</span><span class="statusShow"></span></p>
+        </div>
+        <div class="showDiv bg-warning" id="dirCourseShow">
+          <span class="glyphicon text-warning">方</span>
+          <p><span class="showLabel text-warning">上传文件：</span><span class="fileShow"></span></p>
+          <p><span class="showLabel text-warning">选课开放时间：</span><span class="timeShow"></span></p>
+          <p><span class="showLabel text-warning">选课状态：</span><span class="statusShow"></span></p>
+        </div>
+      </div>
       </div>
     </div>
   </div>

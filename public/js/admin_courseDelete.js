@@ -87,6 +87,7 @@ var subjectNum = 0;
 //获取所有老师
 function agree(id,teacher){
   subjectNum = id;
+  $('#myModalLabel span').html(id);
   $.ajax({
     type:'get',
     url:'../ChooseCourse.jsp',

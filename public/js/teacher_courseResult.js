@@ -146,6 +146,7 @@ function Delete(name){
     success:function(res){
       console.log(res);
       // window.location.reload();
+      alert(res.msg);
     }
   });
 }

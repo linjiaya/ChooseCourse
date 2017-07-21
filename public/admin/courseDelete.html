@@ -14,6 +14,7 @@
       <![endif]-->
       <link rel="stylesheet" href="../css/courseSystem.css">
       <link rel="stylesheet" href="../css/courseResult.css">
+      <link rel="shortcut icon" href="../img/favicon.ico">
       <script src="../js/template-native.js"></script>
 </head>
 <body>
@@ -82,8 +83,8 @@
                           <td><%= list[i].course_section %>节</td>
                           <td><%= list[i].course_weekday %></td>
                           <td><%= list[i].status %></td>
-                          <td><a href="#" class="agree" onclick="agree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">重新安排</a></td> 
-                          <td><a href="#" class="text-danger" onclick="disagree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">拒绝申请</button></td>
+                          <td><a href="#" class="Btn agree bg-info" onclick="agree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">重新安排</a></td> 
+                          <td><a href="#" class="Btn text-danger bg-danger" onclick="disagree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">拒绝申请</button></td>
                         </tr>
                         <% } %>
                       </tbody>
@@ -146,8 +147,8 @@
                           <td><%= list[i].course_section %>节</td>
                           <td><%= list[i].course_weekday %></td>
                           <td><%= list[i].status %></td>
-                          <td><a href="#" class="agree" onclick="agree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">重新安排</a></td> 
-                          <td><a href="#" class="text-danger" onclick="disagree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">拒绝申请</button></td>
+                          <td><a href="#" class="Btn agree bg-info" onclick="agree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">重新安排</a></td> 
+                          <td><a href="#" class="Btn text-danger bg-danger" onclick="disagree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">拒绝申请</button></td>
                         </tr>
                         <% } %>
                       </tbody>
@@ -208,8 +209,8 @@
                           <td><%= list[i].course_section %>节</td>
                           <td><%= list[i].course_weekday %></td>
                           <td><%= list[i].status %></td>
-                          <td><a href="#" class="agree" onclick="agree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">重新安排</a></td> 
-                          <td><a href="#" class="text-danger" onclick="disagree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">拒绝申请</button></td>
+                          <td><a href="#" class="Btn agree bg-info" onclick="agree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">重新安排</a></td> 
+                          <td><a href="#" class="Btn text-danger bg-danger" onclick="disagree(<%= list[i].subject_num %>,<%= list[i].teacher_num %>)">拒绝申请</button></td>
                         </tr>
                         <% } %>
                       </tbody>
@@ -236,7 +237,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
           </button>
           <h4 class="modal-title text-info" id="myModalLabel">
-            课程<span>10001</span> <small>重新安排任课教师</small>
+            课程<span></span> <small>重新安排任课教师</small>
           </h4>
         </div>
         <div class="modal-body">

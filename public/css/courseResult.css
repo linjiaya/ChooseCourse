@@ -36,3 +36,8 @@ td{
 #teacherSelect{
   width: 10rem;
 }
+.Btn{
+  padding: 4px 12px;
+  font-size: .6rem;
+  border-radius: 4px;
+}

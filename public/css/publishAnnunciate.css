@@ -25,10 +25,10 @@ label{
   border-radius: 50px;
   border:2px solid #ddd;
 }
-#openCourse:checked ~ .btn-group .btn:first-child,#labCourse:checked ~ .btn-group .btn:nth-child(2),#directionCourse:checked ~ .btn-group .btn:last-child{
+#openCourse:checked ~ .btn-group .btn:first-child,#labCourse:checked ~ .btn-group .btn:nth-child(2),#dirCourse:checked ~ .btn-group .btn:last-child{
   background-color: white;
 }
-#openCourse:checked ~ .btn-group .btn:first-child label,#labCourse:checked ~ .btn-group .btn:nth-child(2) label,#directionCourse:checked ~ .btn-group .btn:last-child label{
+#openCourse:checked ~ .btn-group .btn:first-child label,#labCourse:checked ~ .btn-group .btn:nth-child(2) label,#dirCourse:checked ~ .btn-group .btn:last-child label{
   font-weight: 500;
 }
 // #setTimeStart label{
@@ -46,4 +46,33 @@ label{
 }
 #end{
   width: 100px;
+}
+.filename{
+  padding-left: 2rem;
+  color: #aaa;
+}
+.showDiv{
+  width: 100%;
+  margin: 10px auto;
+  padding:5px;
+  height: 90px;
+  position: relative;
+  display: none;
+}
+.showDiv .glyphicon{
+  border-radius: 50%;
+  font-size: 3rem;
+  float: left;
+  height: 100%;
+  display:block;
+  width:50px;height: 50px;
+  position: absolute;
+  top: 5px;left: 1rem;
+  border:1px solid white;
+  text-align: center;
+  line-height: 40px;
+}
+.showLabel{
+  font-size: 1rem;
+  margin-left: 80px;
 }

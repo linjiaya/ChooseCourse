@@ -1,0 +1,25 @@
+.showDiv{
+  width: 100%;
+  margin: 10px auto;
+  padding:5px;
+  height: 90px;
+  position: relative;
+  display: none;
+}
+.showDiv .glyphicon{
+  border-radius: 50%;
+  font-size: 3rem;
+  float: left;
+  height: 100%;
+  display:block;
+  width:50px;height: 50px;
+  position: absolute;
+  top: 5px;left: 1rem;
+  border:1px solid white;
+  text-align: center;
+  line-height: 40px;
+}
+.showLabel{
+  font-size: 1rem;
+  margin-left: 80px;
+}

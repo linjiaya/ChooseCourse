@@ -1,39 +1,16 @@
 .white{
   padding: 2rem;
 }
-.table > tbody > tr > td{
-  padding: 2rem;
-}
 .table > tbody > tr > th{
-  padding: 2rem 8px;
+  vertical-align: middle;
 }
 th,td{
   white-space: nowrap;
   text-align: center;
 }
-td{color: white;}
 td[colspan="8"]{
   padding: 8px;
   font-size: 2.4rem;
-  color: #5294E0;
   font-weight: bold;
   letter-spacing: 2rem;
-}
-.yellow{
-  background-color: #FEC917;
-}
-.yellow:hover{
-  background-color: #FFB800;
-}
-.blue{
-  background-color: #6ACFF7;
-}
-.blue:hover{
-  background-color: #5BC1EB;
-}
-.green{
-  background-color: #67CF76;
-}
-.green:hover{
-  background-color: #59B675;
 }

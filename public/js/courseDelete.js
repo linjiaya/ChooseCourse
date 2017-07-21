@@ -134,9 +134,8 @@ function Delete(name){
     },
     success:function(res){
       console.log(res);
-      alert('退课成功！',function(){
-       window.location.reload();
-      })
+      alert('退课成功！')
+      window.location.reload();
     }
   });
 }

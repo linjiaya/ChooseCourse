@@ -714,7 +714,7 @@ app.get('/ChooseCourse.jsp',function (req,res){
   if (req.query.api === 'addNews') {
     connection.query('select * FROM news where type_id = "'+req.query.typeId+'"',function(err,rows,fields){
       if (rows.length <= 0) {
-        var news = {'type_id':req.query.typeId,'detail':req.query.detail,'time':req.query.time,'is_open':'0'};
+        var news = {'type_id':req.query.typeId,'detail':req.query.detail,'time':req.query.time,'is_open':'0','end_option':'0','endTime':'暂无'};
         connection.query('insert INTO news SET ?',news,function(err,result){
           res.send({'res':'1','msg':'添加成功！'});
         });
@@ -745,12 +745,41 @@ app.get('/ChooseCourse.jsp',function (req,res){
         return;
       }
       else{
-        if (rows[0].is_open == '0') {
-          res.send({'res':'0','msg':'该部分课程已暂停选课！'});
-          return;
+        var d = new Date();
+        //设置时间格式
+        var reg;
+        function timeReg(arg){
+          if (parseInt(arg) < 10) {
+            reg = '0' + arg;
+          }
+          else{
+            reg = arg;
+          }
+          return reg;
         }
-        if (rows[0].is_open == '1') {
-          res.send({'res':'1','msg':'该部分课程选课进行中！','data':rows});
+        //得到当前时间
+       var currentTime =d.getFullYear()+timeReg(1+d.getMonth())+timeReg(d.getDate());
+        // var str = d.getFullYear().toString()+(d.getMonth()+1).toString()+d.getDate().toString();
+        var timeArr = rows[0].time.split('-');
+        var time = timeArr[0]+timeArr[1]+timeArr[2];
+        // console.log('currentTime',currentTime);
+        // console.log('time',time);
+        var data = rows;
+        if (parseInt(time) < parseInt(currentTime)) {//超过开放时间时
+          if (rows[0].end_option == '0') {//如果未执行结束选课操作，则需要讲选课开放。
+            connection.query('update news set is_open = "1"',function(err,result){
+              res.send({'res':'1','msg':'该部分课程选课进行中！','data':data});
+            });
+            return;
+          }
+          else{
+            res.send({'res':'0','msg':'该部分课程已暂停选课！','data':data});
+            return;
+          }
+        }
+        else{
+          res.send({'res':'0','msg':'该部分课程未到选课时间，请等候开放！','data':data});
+          return;
         }
       }
     })
@@ -763,11 +792,16 @@ app.get('/ChooseCourse.jsp',function (req,res){
         return;
       }
       else{
-        connection.query('update news set is_open = "0"',function(err,result){
-          res.send({'res':'1','msg':'该部分选课结束设置成功！'});
-        })
+        connection.query('update news set is_open = "0" where type_id = "'+req.query.typeId+'"',function(err,result){
+          connection.query('update news set end_option = "1" where type_id = "'+req.query.typeId+'"',function(err,result){
+            connection.query('update news set endTime = "'+req.query.endTime+'" where type_id = "'+req.query.typeId+'"',function(err,result){
+              res.send({'res':'1','msg':'该部分选课结束设置成功！'});
+            });
+          });
+        });
       }
-    })
+    });
+    return;
   }
 
   /*------------------ 获取学生表 -------------------------*/
@@ -829,17 +863,19 @@ var connection = mysql.createConnection({
 });
 connection.connect();  //链接数据库
 
-// connection.query('UPDATE news SET is_open = "1" where id = 10003',function(err,rows,fields){
+// connection.query('UPDATE news SET is_open = "1" where id in (1)',function(err,rows,fields){
 //   if (err) throw err;
 
 //   console.log('The solution is: ', rows);
 // })
+
 // var user  = {'stu_name': '胡玲','stu_password':'444444','stu_sex':'女','stu_collage':'外国语学院','stu_grad':'2012','stu_major':'商务英语','stu_phone':'13444444444'};
 // connection.query('insert INTO student set ?', user, function(err, result) {
 //   if (err) throw err;
 //   console.log('insert lisi');     
 // });
-connection.query('select * FROM reject_detail', function(err, rows, fields) {
+
+connection.query('select * FROM news', function(err, rows, fields) {
   if (err) throw err;
 
   console.log('学生表: ', rows);
@@ -849,7 +885,7 @@ connection.query('select * FROM reject_detail', function(err, rows, fields) {
 
 //   console.log('教师表: ', rows);
 // });   //查询
-// connection.query('delete FROM news where id in (10000,10001,10002)', function(err, rows, fields) {
+// connection.query('delete FROM reject_detail where id in (1)', function(err, rows, fields) {
 //   if (err) throw err;
 
 //   console.log(rows);

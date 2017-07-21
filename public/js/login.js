@@ -59,26 +59,6 @@ function submit() {
     
     }
   });
-  // $.ajax({
-  //   type:'get',
-  //   url:'http://192.168.31.238:8080/linjia/user/login',
-  //   cache: false,
-  //   crossDomain: true,
-  //   async: true,
-  //   contentType: 'application/json;charset=utf8',
-  //   dataType: 'jsonp',
-  //   jsonp: 'callback',
-  //   timeout: 10000,
-  //   data:{
-  //     'id':'admin02',
-  //     'password':'qwerty',
-  //     'type':'3'
-  //   },
-  //   success:function(response){
-  //     console.log(response);
-  //   }
-
-  // });
 }
 
 // 键盘输入时输入框颜色提醒
