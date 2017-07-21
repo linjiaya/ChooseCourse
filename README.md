@@ -39,5 +39,5 @@
   
  * 管理员
    * 账号:ECIT
-   * 密码:00001111
+   * 密码:00001111<br/>
 ![](https://github.com/linjiaya/ChooseCourse/raw/master/webImages/forgetPsw.gif) 
