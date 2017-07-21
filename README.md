@@ -27,17 +27,16 @@
 
 ## 登录
 
-![](https://github.com/linjiaya/ChooseCourse/raw/master/webImages/login.png)
  用户输入校园通账号、密码，选择对应的身份进行验证登录。本系统暂时只设定了几个账号用于登录。
- * 学生
-   * 账号:10000
-   * 密码:111111
+ * 学生 --  账号:10000  密码:111111
+ * 教师 --  账号:10000  密码:aaaaaa
+ * 管理员 --  账号:ECIT 密码:00001111<br/>
+<br><br>
+![](https://github.com/linjiaya/ChooseCourse/raw/master/webImages/login.png)
  
- * 教师
-   * 账号:10000
-   * 密码:aaaaaa
-  
- * 管理员
-   * 账号:ECIT
-   * 密码:00001111<br/>
+ ## 找回密码
+ 
+用户可以通过校园通账号，通过发送手机验证码，重新设置新密码在进行登录。<br>
+<br><br>
 ![](https://github.com/linjiaya/ChooseCourse/raw/master/webImages/forgetPsw.gif) 
+
