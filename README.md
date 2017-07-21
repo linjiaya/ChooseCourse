@@ -40,3 +40,4 @@
 <br><br>
 ![](https://github.com/linjiaya/ChooseCourse/raw/master/webImages/forgetPsw.gif) 
 
+<p color="red">其他功能因数据原因无法展示</p>
