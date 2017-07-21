@@ -11,7 +11,8 @@
 * 退课
 * 查看课表
 
-  
+![](https://github.com/linjiaya/ChooseCourse/raw/master/webImages/login.png"登录界面")
+
 ## 教师
 
 * 查看公告
