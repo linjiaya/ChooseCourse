@@ -4,7 +4,7 @@
 <p><code>git clone git@github.com:linjiaya/ChooseCourse.git</code></p>
 <p><code>npm install</code></p>
 <p><code>node index.js</code></p>
-<p>系统大纲</p>
+## 系统大纲
   此系统分为三个角色：学生、教师、管理员。每个角色都有各自的功能。例如：
   
 * 学生
