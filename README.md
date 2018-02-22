@@ -1,9 +1,9 @@
 <h1 align="center">大学生网上选课系统</h1>
 <p align="right"><small>－－我的毕业设计</small></p>
 <h1>下载安装</h1>
-<code>git clone git@github.com:linjiaya/ChooseCourse.git</code>
-<code>npm install</code>
-<code>node index.js</code>
+<p><code>git clone git@github.com:linjiaya/ChooseCourse.git</code></p>
+<p><code>npm install</code></p>
+<p><code>node index.js</code></p>
 
   此系统分为三个角色：学生、教师、管理员。每个角色都有各自的功能。例如：
   
